@@ -1,12 +1,14 @@
+inventario=[]
 def agregarProducto(productos):
-    validar=False
+    """Esta funcion agrega los productos al diccionario"""
+    disponible=False
     while True:
         nombre=input("ingrese nombre del producto: ").title()
-        if not "   " in nombre:
-            nombreV=True
-            break
-        else:
+        if nombre is any or nombre ==" ":
             print("el nombre a ingresar no debe estar vacio")
+            
+        else:
+            break
     while True:
         try:
             
@@ -22,43 +24,55 @@ def agregarProducto(productos):
         try:
             stock=int(input("ingrese la cantidad de productos a ingresar: "))
             if stock>=0:
-                if stock==0:
-                    disponible=False
-                else:
-                    disponible=True
                 break
             else:
                 print("la cantidad a ingresar debe ser mayor a cero")
         except ValueError:
             print("debe ser valor numerico")
-    productos[nombre]={"precio":precio, "stock":stock, "disponible":disponible}
+    productos={
+        "nombre":nombre.strip(),
+        "precio":int(precio),
+        "stock":int(stock),
+        "disponible": False
+    } 
+
 def buscarProducto(productos):
+    """Esta funcion busca dentro del diccionario"""
     while True:
-        nombre=input("ingrese el producto que busca: ").title()
-        if nombre in productos:
-            print(nombre)
-            print("$",productos[nombre]["precio"])
-            print(productos[nombre]["stock"])
-            if productos[nombre]["disponible"]==True:
-                print("Disponible")
-            else:
-                print("sin stock")
-                
+        if not productos:
+            print("no se han ingresado productos al inventario")
             break
         else:
-            print("producto no encontrado")
+            nombre=input("ingrese el producto que busca: ").title()
+            if nombre in productos:
+                print(nombre)
+                print("$",productos[nombre]["precio"])
+                print("Stock",productos[nombre]["stock"])
+                
+                    
+                break
+            else:
+                print("producto no encontrado")
             
             
 def eliminarProducto(productos):
+    
     while True:
-        nombre=input("ingrese el nombre del producto: ").title()
-        if nombre in productos[nombre]:
-            del productos[nombre]
+        
+        if not productos:
+            print("no se han ingresado productos al inventario")
             break
         else:
-            print("Producto no encontrado")
+            nombre=input("ingrese el nombre del producto: ").title()
+            if nombre in productos:
+                del productos[nombre]
+                print ("producto eliminado")
+            else:
+                print("Producto no encontrado")
 
-
+def actualizarProducto(productos):
+    for producto in producto["stock"]:
+        
         
 
 
@@ -67,7 +81,7 @@ def eliminarProducto(productos):
 
 
 
-productos={}
+
 
 
 opcion=0
@@ -92,9 +106,9 @@ while opcion != 6:
         case 2:
             buscarProducto(productos)
         case 3:
-            print()
+            eliminarProducto(productos)
         case 4:
-            print()
+            actualizarProducto(productos)
         case 5:
             print()
         case 6:
