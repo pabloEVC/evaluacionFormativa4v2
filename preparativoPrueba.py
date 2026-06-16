@@ -70,8 +70,8 @@ def eliminarProducto(productos):
             else:
                 print("Producto no encontrado")
 
-def actualizarProducto(productos):
-    for producto in producto["stock"]:
+#def actualizarProducto(productos):
+#    for producto in producto["stock"]:
         
         
 
@@ -108,7 +108,7 @@ while opcion != 6:
         case 3:
             eliminarProducto(productos)
         case 4:
-            actualizarProducto(productos)
+            print()
         case 5:
             print()
         case 6:
